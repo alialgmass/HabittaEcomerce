@@ -1,3 +1,5 @@
+
+@if(Auth::check())
 <li class="nav-item dropdown dropdown-notification me-25">
     <a class="nav-link" href="#" data-bs-toggle="dropdown">
         <i class="ficon" data-feather="bell"></i>
@@ -49,3 +51,4 @@
         </li>
     </ul>
 </li>
+@endif

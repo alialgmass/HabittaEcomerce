@@ -16,7 +16,8 @@ class Address extends Model
         'phone',
         'country_code',
         'address',
-        'default',
+        'is_default',
+
         'lat',
         'lng',
     ];
@@ -25,7 +26,7 @@ class Address extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function scopeDefault($query)
     {
         return $query->where('is_default', true);

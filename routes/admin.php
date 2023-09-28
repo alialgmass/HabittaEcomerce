@@ -14,7 +14,7 @@ use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth','role:admin']], function () {
     Route::get('/', [AdminPanelController::class, 'index'])->name('admin.index');
 
     Route::resource('roles', RoleController::class);

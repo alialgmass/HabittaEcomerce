@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Country extends Model
 {
     use HasFactory;
@@ -27,7 +28,7 @@ class Country extends Model
     {
         return ucfirst($this->{'name_' . app()->getLocale()});
     }
-    
+
     public function getMaxNumberAttribute($value)
     {
         return (int) $value;

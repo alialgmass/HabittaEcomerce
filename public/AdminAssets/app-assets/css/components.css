@@ -23,7 +23,9 @@ html .content {
   margin-left: 260px; }
 
 html .content.app-content {
-  padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0; }
+  padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0;
+min-height: 120vh;
+}
 
 html .content.app-content.show-overlay .content-overlay {
   z-index: 10;
@@ -534,6 +536,7 @@ html .pace .pace-progress {
     width: 100%; }
   body .content-detached.content-right {
     float: right;
+      min-height: 212vh;
     margin-left: -260px; }
   body .content-detached.content-right .content-body {
     margin-left: calc(260px + 2rem); }

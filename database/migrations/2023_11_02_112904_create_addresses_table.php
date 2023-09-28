@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('country_code', 5);
             $table->string('address');
+            $table->decimal('lat',32,16);
+            $table->decimal('lng',32,16);
             $table->boolean('is_default')->default(false);
             $table->timestamps();
         });

@@ -70,9 +70,9 @@ class Order extends Model
         return $this->belongsTo(Coupon::class);
     }
 
-    public function address()
+    public function addresses()
     {
-        return $this->belongsTo(Address::class);
+        return $this->belongsTo(Address::class,'address_id','id');
     }
 
     public function user()
@@ -133,20 +133,20 @@ class Order extends Model
     }
     public function getDateAttribute($value){
         return  Carbon::parse($this->created_at)->format('M d, Y');
-          
+
       }
       public function getTimeAttribute($value){
           return  Carbon::parse($this->created_at)->format('g:i a');
-  
+
       }
       public function getDateTimeAttribute($value){
           return  Carbon::parse($this->created_at)->format('d M').' '.    Carbon::parse($this->created_at)->format('g:i a');
-  
+
       }
       public function room()
       {
           return $this->hasOne(Room::class);
       }
-    
+
 
 }

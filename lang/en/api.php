@@ -63,4 +63,5 @@ return [
     'noDataFound' => 'no Data Found',
     'PasswordResetSuccessfully' => 'Password Reset Successfully',
     'PhoneNumberHasBeenChangedSuccessfully' => 'Phone Number Has Been Changed Successfully',
+    'otpIsTrue'=>'Otp is matched'
 ];

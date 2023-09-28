@@ -1,3 +1,5 @@
+@if(Auth::check())
+
 <li class="nav-item dropdown dropdown-user">
     <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -29,3 +31,4 @@
 
     </div>
 </li>
+@endif

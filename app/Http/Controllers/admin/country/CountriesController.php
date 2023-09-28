@@ -30,6 +30,7 @@ class CountriesController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->except(['_token', 'flag']);
+
         $country = Country::create($data);
         if ($request->hasFile('flag')) {
             $country['flag'] = upload_image('countries/' . $country->id, $request->flag);

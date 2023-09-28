@@ -26,7 +26,7 @@ class UpdateAddressRequest extends FormRequest
             // 'phone' =>  ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/'],
             // 'country_code' => ['nullable', 'string'],
             'address' => ['required', 'string'],
-            'default' => ['required', 'boolean'],
+            'is_default' => ['required', 'boolean'],
             'lat' => ['required', 'string'],
             'lng' => ['required', 'string'],
         ];

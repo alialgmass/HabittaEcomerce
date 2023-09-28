@@ -19,7 +19,7 @@ class ProductModelRepository implements ProductRepository
     {
         $categories = Category::where('id', '!=', '0')->pluck('name_' . app()->getLocale(), 'id')->toArray();
 
-        
+
         return view('AdminPanel.products.create', [
             'active' => 'products',
             'title' => trans('common.products'),
@@ -37,12 +37,14 @@ class ProductModelRepository implements ProductRepository
 
     public function store(StoreProductRequest $request)
     {
+
         $data = $request->validated();
+
         $product = Product::create($data);
 
 
         if ($request->image != '') {
-            $product['image'] = upload_image('products/' . $product->id, $request->image);
+            $product->image= upload_image('products/' . $product->id, $request->image);
             $product->update();
         }
         if (isset($_FILES['additionalImages'])) {
@@ -52,14 +54,15 @@ class ProductModelRepository implements ProductRepository
                 ]);
             }
         }
-        if (isset($request->key_ar)) {
+
+        if (isset($request->key_ar)&&isset($request->key_en)&&isset($request->value_ar)&&isset($request->value_en)) {
             for ($i = 0; $i < count($request->key_ar); $i++) {
                 ProductFeature::create([
                     'product_id'=>$product->id,
-                    'key_ar'=>$request->key_ar,
-                    'key_en'=>$request->key_en,
-                    'value_ar'=>$request->value_ar,
-                    'value_en'=>$request->value_en,
+                    'key_ar'=>$request->key_ar[$i] ?? ' ',
+                    'key_en'=>$request->key_en[$i] ?? ' ',
+                    'value_ar'=>$request->value_ar[$i] ?? ' ',
+                    'value_en'=>$request->value_en[$i] ?? ' ',
                 ]);
             }
         }
@@ -77,7 +80,7 @@ class ProductModelRepository implements ProductRepository
     {
         $product->load( 'offers', 'category');
         $categories = Category::where('id', '!=' , '0')->pluck('name_' . app()->getLocale(), 'id')->toArray();
-    
+
         return view('AdminPanel.products.edit', [
             'active' => 'products',
             'title' => trans('common.products'),
@@ -99,7 +102,7 @@ class ProductModelRepository implements ProductRepository
         $data = $request->validated();
         $product->update($data);
 
-       
+
 
         if ($request->image != '') {
             $product['image'] = upload_image('products/' . $product->id, $request->image);
@@ -145,7 +148,7 @@ class ProductModelRepository implements ProductRepository
     public function destroy(Product $product)
     {
 
-       
+
             if ($product->image != '') {
                 File::deleteDirectory(public_path('uploads/products/' . $product->id), );
             }

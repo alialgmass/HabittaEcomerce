@@ -64,4 +64,5 @@ return [
     'noDataFound' => 'لا يوجد بيانات',
     'PasswordResetSuccessfully' => 'تم إعادة تعيين كلمة المرور بنجاح',
     'PhoneNumberHasBeenChangedSuccessfully' => 'تم تغيير رقم الهاتف بنجاح',
+    'otpIsTrue'=>'متطابق'
 ];
